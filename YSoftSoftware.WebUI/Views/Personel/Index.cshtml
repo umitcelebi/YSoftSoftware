@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Personel>
+
+
+<a asp-controller="Personel" asp-action="Create" class="btn btn-success">Create Employee</a>
+
+<table class="table table-bordered table-striped">
+    <thead>
+    <tr>
+        <th>Personel ID</th>
+        <th>Personel Name</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.PersonelId</td>
+            <td>@item.Name</td>
+            <td>
+                <a asp-controller="Personel" asp-action="Delete" asp-route-Id="@item.PersonelId" class="btn btn-danger">Delete</a>
+                <a class="btn btn-secondary" asp-controller="Personel" asp-action="Edit" asp-route-id="@item.PersonelId">Edit</a>
+                <a class="btn btn-warning" asp-controller="Personel" asp-action="Details" asp-route-id="@item.PersonelId">Details</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

@@ -1,0 +1,49 @@
+﻿@model Project
+
+@{
+}
+
+<div class="card text-center">
+    <div class="card-header">
+        <h5>@Model.ProjectName</h5>
+    </div>
+    <div class="card-body">
+        <p class="card-title">Min Personel Of Project: @Model.MinPersonel</p>
+        <p class="card-title">Max Personel Of Project: @Model.MaxPersonel</p>
+        <a asp-controller="Project" asp-action="Edit" asp-route-id="@Model.ProjectId" class="btn btn-primary">Finish the Project.</a>
+    </div>
+    <div class="card-footer text-muted">
+        Manager Of Project
+        <ul class="list-group">
+            @foreach (var manager in ViewBag.Manager)
+            {
+                <li class="list-group-item">@manager.Name</li>
+            }
+        </ul>
+
+        Designer Of Project
+        <ul class="list-group">
+            @foreach (var designer in ViewBag.Designer)
+            {
+                <li class="list-group-item">@designer.Name</li>
+            }
+        </ul>
+
+        Programmer Of Project
+        <ul class="list-group">
+            @foreach (var programmer in ViewBag.Programmer)
+            {
+                <li class="list-group-item">@programmer.Name</li>
+            }
+        </ul>
+
+        Analist Of Project
+        <ul class="list-group">
+            @foreach (var analyst in ViewBag.Analyst)
+            {
+                <li class="list-group-item">@analyst.Name</li>
+            }
+        </ul>
+
+    </div>
+</div>

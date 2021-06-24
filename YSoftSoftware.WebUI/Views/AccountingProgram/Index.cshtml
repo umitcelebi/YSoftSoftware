@@ -1,0 +1,31 @@
+﻿@model IEnumerable<AccountingProgram>
+
+@{
+    ViewData["Title"] = "Programs";
+}
+<hr />
+<a class="btn btn-success" asp-controller="AccountingProgram" asp-action="Create">Create Accounting Program</a>
+<hr />
+
+<table class="table table-bordered table-striped">
+    <thead>
+    <tr>
+        <th>Program ID</th>
+        <th>Program Name</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.AccountingProgramId</td>
+            <td>@item.Name</td>
+            <td>
+                <a asp-controller="AccountingProgram" asp-action="Edit"  asp-route-id="@item.AccountingProgramId" class="btn btn-primary btn-sm">Edit</a>
+                <a asp-controller="AccountingProgram" asp-action="Delete"  asp-route-id="@item.AccountingProgramId" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

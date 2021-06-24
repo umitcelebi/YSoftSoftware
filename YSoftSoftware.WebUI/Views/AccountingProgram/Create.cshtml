@@ -1,0 +1,16 @@
+﻿@model AccountingProgram
+
+@{
+    ViewData["Title"] = "Create Accounting Program";
+}
+
+<form asp-controller="AccountingProgram" asp-action="Create">
+    <div asp-validation-summary="All"></div>
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label"></label>
+        <input class="form-control" asp-for="Name">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+    
+</form>

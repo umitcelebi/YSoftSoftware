@@ -1,0 +1,110 @@
+﻿@model Project
+
+@{
+    ViewData["Title"] = "Edit Project";
+}
+
+<form asp-controller="Project" asp-action="Edit" method="post">
+
+    <div asp-validation-summary="All"></div>
+
+    <div class="row">
+        <input type="hidden" asp-for="ProjectId" />
+        <div class="col-md-8">
+            <div class="mb-3">
+                <label asp-for="ProjectName" class="form-label"></label>
+                <input class="form-control" asp-for="ProjectName">
+                <div><span class="text-danger" asp-validation-for="ProjectName"></span></div>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="MinPersonel" class="form-label"></label>
+                <input type="text" class="form-control" asp-for="MinPersonel">
+                <div><span class="text-danger" asp-validation-for="MinPersonel"></span></div>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="MaxPersonel" class="form-label"></label>
+                <input type="text" class="form-control" asp-for="MaxPersonel">
+                <div><span class="text-danger" asp-validation-for="MaxPersonel"></span></div>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Status" class="form-label"></label>
+                <input class="form-check-label" asp-for="Status">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="form-group">
+                <label>Manager</label>
+                <select class="form-control" name="Personel" asp-items="ViewBag.Manager" required="true">
+                    <option disabled="disabled">Select Manager</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Programmer</label>
+
+                @foreach (var programmer in (List<Personel>)ViewBag.Programmer)
+                {
+                    <div class="form-check">
+                        <input class="form-check-input"
+                               type="checkbox"
+                               name="Personel"
+                               value="@programmer.PersonelId"
+                               id="programmer_@programmer.PersonelId"
+                               @(Model.Personels.Any(p => p.PersonelId == programmer.PersonelId) ? "checked" : "")>
+                        <label class="form-check-label" for="programmer_@programmer.PersonelId">
+                            @programmer.Name
+                        </label>
+                    </div>
+                }
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Designer</label>
+                @foreach (var designer in (List<Personel>)ViewBag.Designer)
+                {
+                    <div class="form-check">
+                        <input class="form-check-input"
+                               type="checkbox"
+                               name="Personel"
+                               value="@designer.PersonelId"
+                               id="programmer_@designer.PersonelId"
+                               @(Model.Personels.Any(p => p.PersonelId == designer.PersonelId) ? "checked" : "")>
+                        <label class="form-check-label" for="programmer_@designer.PersonelId">
+                            @designer.Name
+                        </label>
+                    </div>
+                }
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Analyst</label>
+                @foreach (var analyst in (List<Personel>)ViewBag.Analyst)
+                {
+                    <div class="form-check">
+                        <input class="form-check-input"
+                               type="checkbox"
+                               name="Personel"
+                               value="@analyst.PersonelId"
+                               id="programmer_@analyst.PersonelId"
+                               @(Model.Personels.Any(p => p.PersonelId == analyst.PersonelId) ? "checked" : "")>
+                        <label class="form-check-label" for="programmer_@analyst.PersonelId">
+                            @analyst.Name
+                        </label>
+                    </div>
+                }
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+</form>
